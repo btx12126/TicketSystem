@@ -13,6 +13,7 @@ public class Ticket {
     private Integer id;
     private double price;
     private String category;
+    private boolean available=true;
 
     public Ticket(double price, String category){
         this.price=price;
@@ -27,5 +28,11 @@ public class Ticket {
     }
     public Integer getId(){
         return id;
+    }
+    public void bought(){
+        available=false;
+    }
+    public boolean getAvailable(){
+        return available;
     }
 }
