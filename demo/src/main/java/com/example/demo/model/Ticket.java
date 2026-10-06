@@ -1,9 +1,6 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Ticket {
@@ -14,6 +11,9 @@ public class Ticket {
     private double price;
     private String category;
     private boolean available=true;
+    @ManyToOne
+    @JoinColumn(name="owner_id")
+    private Client owner=null;
 
     public Ticket(double price, String category){
         this.price=price;
@@ -34,5 +34,8 @@ public class Ticket {
     }
     public boolean getAvailable(){
         return available;
+    }
+    public void setOwner(Client owner){
+        this.owner=owner;
     }
 }
