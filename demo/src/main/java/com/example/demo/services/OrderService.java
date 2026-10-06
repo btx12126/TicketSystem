@@ -18,9 +18,7 @@ public class OrderService {
     }
 
     @Transactional
-    public String buyTicket(Client client, Ticket ticket){
-        Integer clientId=client.getId();
-        Integer ticketId=ticket.getId();
+    public String buyTicket(Integer clientId, Integer ticketId){
         if (clientId==null || ticketId==null){
             throw new IllegalArgumentException("transaction failed. Wrong parametrs");
         }
