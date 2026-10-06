@@ -28,7 +28,7 @@ public class TicketService {
     }
 
 
-    public List<Ticket> checkAvailiable(){
+    public List<Ticket> checkAvailable(){
         return repo.findAvailable();
     }
 }

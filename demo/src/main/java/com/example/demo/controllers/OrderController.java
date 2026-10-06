@@ -1,7 +1,5 @@
 package com.example.demo.controllers;
 
-import com.example.demo.model.Client;
-import com.example.demo.model.Ticket;
 import com.example.demo.services.OrderService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,12 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
-    private final OrderService order;
-    public OrderController(OrderService order){
-        this.order=order;
+    private final OrderService orderService;
+    public OrderController(OrderService orderService){
+        this.orderService=orderService;
     }
     @PostMapping("/buy")
     public String buy(@RequestParam Integer clientId,@RequestParam Integer ticketId){
-        return order.buyTicket(clientId,ticketId);
+        return orderService.buyTicket(clientId,ticketId);
     }
 }
