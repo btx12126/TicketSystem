@@ -4,6 +4,7 @@ import com.example.demo.model.Ticket;
 import com.example.demo.services.TicketService;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,7 @@ public class TicketController {
         }
 
     @PostMapping("/add-ticket")
-    public String addTicket(@RequestParam  double price,@RequestParam String category){
+    public String addTicket(@RequestParam BigDecimal price, @RequestParam String category){
         return ticketService.addTicket(price,category);
     }
 }
