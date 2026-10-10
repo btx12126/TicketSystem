@@ -17,7 +17,7 @@ public class TicketService {
     }
 
     public String addTicket(BigDecimal price, String category){
-        if (price<=0){
+        if (price==null || price.compareTo(BigDecimal.ZERO)<=0){
             throw new IllegalArgumentException("wrong price");
         }
         if(category==null || category.isEmpty()){
