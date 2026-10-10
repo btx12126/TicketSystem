@@ -2,25 +2,27 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity
 public class Ticket {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
-    private double price;
+    private BigDecimal price;
     private String category;
     private boolean available=true;
     @ManyToOne
     @JoinColumn(name="owner_id")
     private Client owner=null;
 
-    public Ticket(double price, String category){
+    public Ticket(BigDecimal price, String category){
         this.price=price;
         this.category=category;
     }
     public Ticket(){}
-    public double getPrice(){
+    public BigDecimal getPrice(){
         return price;
     }
     public String getCategory(){
