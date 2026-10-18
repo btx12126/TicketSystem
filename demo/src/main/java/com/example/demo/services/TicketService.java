@@ -2,7 +2,6 @@ package com.example.demo.services;
 
 import com.example.demo.model.Ticket;
 import com.example.demo.repositories.TicketRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -16,7 +15,7 @@ public class TicketService {
         this.repo=repo;
     }
 
-    public String addTicket(BigDecimal price, String category){
+    public Ticket addTicket(BigDecimal price, String category){
         if (price==null || price.compareTo(BigDecimal.ZERO)<=0){
             throw new IllegalArgumentException("wrong price");
         }
@@ -25,7 +24,7 @@ public class TicketService {
         }
         Ticket ticket=new Ticket(price,category);
         repo.save(ticket);
-        return "ticket added succesfuly";
+        return ticket;
     }
 
 

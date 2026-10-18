@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.model.Buy;
 import com.example.demo.services.OrderService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,7 @@ public class OrderController {
         this.orderService=orderService;
     }
     @PostMapping("/buy")
-    public String buy(@RequestParam Integer clientId,@RequestParam Integer ticketId){
+    public Buy buy(@RequestParam Integer clientId, @RequestParam Integer ticketId){
         return orderService.buyTicket(clientId,ticketId);
     }
 }

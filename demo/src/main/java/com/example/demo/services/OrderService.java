@@ -24,7 +24,7 @@ public class OrderService {
     }
 
     @Transactional
-    public String buyTicket(Integer clientId, Integer ticketId){
+    public Buy buyTicket(Integer clientId, Integer ticketId){
         if (clientId==null || ticketId==null){
             throw new IllegalArgumentException("transaction failed. Wrong parametrs");
         }
@@ -36,7 +36,8 @@ public class OrderService {
         foundTicket.setOwner(foundClient);
         foundTicket.bought();
         repoTicket.save(foundTicket);
-        repoBuy.save(new Buy(foundTicket,foundClient, LocalDateTime.now()));
-        return "transaction succesfull";
+        Buy order = new Buy(foundTicket,foundClient, LocalDateTime.now());
+        repoBuy.save(order);
+        return order;
     }
 }
