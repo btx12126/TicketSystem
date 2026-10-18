@@ -22,7 +22,7 @@ public class TicketController {
         }
 
     @PostMapping("/add-ticket")
-    public String addTicket(@RequestParam BigDecimal price, @RequestParam String category){
+    public Ticket addTicket(@RequestParam BigDecimal price, @RequestParam String category){
         return ticketService.addTicket(price,category);
     }
 }

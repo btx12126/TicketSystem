@@ -16,6 +16,8 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name="owner_id")
     private Client owner=null;
+    @Version
+    private Long version;
 
     public Ticket(BigDecimal price, String category){
         this.price=price;

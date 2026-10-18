@@ -13,7 +13,7 @@ public class ClientService {
         this.repo=repo;
     }
 
-    public String createClient(String name,String surname){
+    public Client createClient(String name,String surname){
         if (name==null || name.isEmpty()){
             throw new IllegalArgumentException("Wrong name");
         }
@@ -22,7 +22,7 @@ public class ClientService {
         }
         Client client=new Client(name,surname);
         repo.save(client);
-        return "client added succesfuly";
+        return client;
     }
 
 
