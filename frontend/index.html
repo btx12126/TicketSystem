@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ticket System - Available tickets</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Ticket System</h1>
+    <nav>
+      <a href="index.html" aria-current="page">Tickets</a>
+      <a href="add-ticket.html">Add ticket</a>
+      <a href="add-client.html">Add client</a>
+      <a href="buy.html">Buy ticket</a>
+    </nav>
+  </header>
+
+  <main>
+    <p id="message" class="message" hidden></p>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Available tickets</h2>
+        <button id="refresh" type="button" class="secondary">Refresh</button>
+      </div>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Category</th><th>Price</th><th></th></tr>
+        </thead>
+        <tbody id="tickets"></tbody>
+      </table>
+      <p id="tickets-empty" class="muted" hidden>No tickets available.</p>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/tickets.js"></script>
+</body>
+</html>
