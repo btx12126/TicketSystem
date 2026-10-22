@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ticket System - Buy ticket</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Ticket System</h1>
+    <nav>
+      <a href="index.html">Tickets</a>
+      <a href="add-ticket.html">Add ticket</a>
+      <a href="add-client.html">Add client</a>
+      <a href="buy.html" aria-current="page">Buy ticket</a>
+    </nav>
+  </header>
+
+  <main>
+    <p id="message" class="message" hidden></p>
+
+    <section class="card narrow">
+      <h2>Buy ticket</h2>
+      <form id="buy-form">
+        <label>Client ID
+          <input name="clientId" type="number" min="1" required>
+        </label>
+        <label>Ticket ID
+          <input name="ticketId" type="number" min="1" required>
+        </label>
+        <button type="submit">Buy</button>
+      </form>
+      <p class="muted">Need an ID? Pick a ticket on the <a href="index.html">Tickets</a> page or create a client on the <a href="add-client.html">Add client</a> page.</p>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/buy.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ticket System - Add ticket</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Ticket System</h1>
+    <nav>
+      <a href="index.html">Tickets</a>
+      <a href="add-ticket.html" aria-current="page">Add ticket</a>
+      <a href="add-client.html">Add client</a>
+      <a href="buy.html">Buy ticket</a>
+    </nav>
+  </header>
+
+  <main>
+    <p id="message" class="message" hidden></p>
+
+    <section class="card narrow">
+      <h2>Add ticket</h2>
+      <form id="ticket-form">
+        <label>Category
+          <input name="category" required placeholder="e.g. VIP">
+        </label>
+        <label>Price (PLN)
+          <input name="price" type="number" step="0.01" min="0.01" required placeholder="e.g. 150.00">
+        </label>
+        <button type="submit">Add ticket</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/add-ticket.js"></script>
+</body>
+</html>
