@@ -16,6 +16,7 @@ The project is split into two parts:
 - **Spring Boot 4.1** (Spring Web MVC, Spring Data JPA, Hibernate)
 - **MySQL 8**
 - **Maven** (wrapper included, no local Maven installation needed)
+- **Docker / Docker Compose** (database, backend and demo frontend start with one command)
 - Frontend: HTML, CSS, vanilla JavaScript (`fetch`)
 
 ## Features
@@ -98,7 +99,29 @@ On Windows PowerShell use `curl.exe` instead of `curl`.
 - **A separate purchase record (`Buy`)** keeps the history of who bought what and when, instead of only a flag on the ticket.
 - **Constructor injection** is used everywhere, and the layers are kept separate so each one can be tested on its own.
 
-## Running the project
+## Quick start (Docker)
+
+The easiest way to run everything: MySQL, the backend and the demo frontend.
+
+**Requirement:** [Docker Desktop](https://www.docker.com/products/docker-desktop/) (running).
+
+```bash
+docker compose up --build
+```
+
+On Windows you can also double-click `start.bat`: it starts the containers, waits until the backend answers and opens the demo UI in the browser. `stop.bat` stops everything.
+
+| Service | Address |
+|---|---|
+| Demo frontend | http://localhost:5500 |
+| Backend API | http://localhost:8080 |
+| MySQL (optional, e.g. for MySQL Workbench) | `127.0.0.1:3307`, database `tickets` |
+
+The first build downloads the dependencies and can take a few minutes; later starts are fast. Data is kept in a Docker volume between runs. To remove it as well: `docker compose down -v`.
+
+Make sure ports `5500` and `8080` are free (stop a locally running backend first). Database credentials default to `app` / `app` and can be overridden with the `DB_USER`, `DB_PASSWORD` and `DB_ROOT_PASSWORD` environment variables.
+
+## Running without Docker
 
 ### Requirements
 
@@ -165,7 +188,7 @@ Planned improvements, in order of priority:
    - **A concurrency test:** many threads try to buy the same ticket at once, and the test asserts that exactly one purchase succeeds and the rest are rejected. This will prove that the optimistic locking works.
 3. **DTOs and request validation** (Bean Validation) so the API does not expose entities directly and validates input declaratively.
 4. **API documentation** with Swagger / OpenAPI.
-5. **Configuration through environment variables** instead of database credentials in `application.properties`.
+5. **Keep credentials out of the repository.** The Docker setup already reads them from environment variables; the remaining defaults in `application.properties` and `docker-compose.yml` should move to an untracked `.env` file.
 
 ## Notes
 
