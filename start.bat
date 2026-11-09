@@ -1,6 +1,12 @@
 @echo off
 cd /d "%~dp0"
 
+if not exist .env (
+    echo Missing .env file. Copy .env.example to .env and set the database credentials.
+    pause
+    exit /b 1
+)
+
 echo Starting Ticket System (the first run can take a few minutes)...
 docker compose up -d --build
 if errorlevel 1 (

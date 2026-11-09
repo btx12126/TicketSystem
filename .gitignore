@@ -1,0 +1,23 @@
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+
+# Build output
+target/
+build/
+out/
+*.class
+
+# Local secrets / environment
+.env
+*.env
+!.env.example
+
+# Archives and misc
+*.7z
+*.zip
+*.log
+HELP.md

@@ -105,6 +105,15 @@ The easiest way to run everything: MySQL, the backend and the demo frontend.
 
 **Requirement:** [Docker Desktop](https://www.docker.com/products/docker-desktop/) (running).
 
+First create a `.env` file with your database credentials (it is ignored by git):
+
+```bash
+cp .env.example .env          # Windows: copy .env.example .env
+# then fill in DB_USER, DB_PASSWORD and DB_ROOT_PASSWORD
+```
+
+Then start everything:
+
 ```bash
 docker compose up --build
 ```
@@ -140,7 +149,7 @@ GRANT ALL PRIVILEGES ON tickets.* TO '<your_user>'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-These are local development credentials. For anything beyond local use, pick your own and do not commit them.
+Pick your own user name and password and never commit them.
 
 The tables are created automatically on the first start (`spring.jpa.hibernate.ddl-auto=update`).
 
@@ -157,8 +166,11 @@ spring.jpa.hibernate.ddl-auto=update
 
 ### 3. Start the backend
 
+The credentials are read from the `DB_USER` and `DB_PASSWORD` environment variables:
+
 ```bash
 cd backend
+export DB_USER=<your_user> DB_PASSWORD=<your_password>   # PowerShell: $env:DB_USER="..."; $env:DB_PASSWORD="..."
 ./mvnw spring-boot:run        # Windows: mvnw.cmd spring-boot:run
 ```
 
@@ -188,7 +200,6 @@ Planned improvements, in order of priority:
    - **A concurrency test:** many threads try to buy the same ticket at once, and the test asserts that exactly one purchase succeeds and the rest are rejected. This will prove that the optimistic locking works.
 3. **DTOs and request validation** (Bean Validation) so the API does not expose entities directly and validates input declaratively.
 4. **API documentation** with Swagger / OpenAPI.
-5. **Keep credentials out of the repository.** The Docker setup already reads them from environment variables; the remaining defaults in `application.properties` and `docker-compose.yml` should move to an untracked `.env` file.
 
 ## Notes
 
